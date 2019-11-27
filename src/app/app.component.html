@@ -1,6 +1,5 @@
-<app-navbar></app-navbar>
-<ul>
-  <li><a href=""></a></li>
-  <li><a href=""></a></li>
-  <li><a href=""></a></li>
-</ul>
+<app-navbar [navbarDisplay]="appNavbarDisplay"></app-navbar>
+
+<app-btn-display-navbar
+  [(navbarDisplay)]="appNavbarDisplay"
+></app-btn-display-navbar>
