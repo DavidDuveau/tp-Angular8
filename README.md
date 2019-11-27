@@ -1,4 +1,4 @@
-Small exercise to work on Angular framwork, api hearthstone made by Lionel Meunier
+Small exercise to work on Angular framework, api hearthstone made by Lionel Meunier
 
 # TpAngularHearthstone
 
