@@ -1,11 +1,12 @@
 <nav
-  *ngIf="navbarDisplay"
+  *ngIf="navbarDisplay | async"
   class="navbar1 navbar navbar-expand-lg navbar-dark bg-dark"
   (mouseleave)="isCollapsed = true"
   (mouseenter)="isCollapsed = false"
 >
   <a class="navbar-brand"
-    >{{ title }} <img [attr.src]="logo" alt="logo app" class="logo" />
+    >{{ title }}<img [attr.src]="logo" alt="logo app" class="logo" />
+    <span>ncular</span>
   </a>
   <button
     class="navbar-toggler"

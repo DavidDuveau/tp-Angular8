@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BtnDisplayNavbarComponent } from './btn-display-navbar/btn-display-navbar.component';
 import { NavScrollDirective } from './directive/nav-scroll.directive';
+import { NavUserNamePipe } from './pipe/nav-user-name.pipe';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     BtnDisplayNavbarComponent,
-    NavScrollDirective
+    NavScrollDirective,
+    NavUserNamePipe
   ],
   exports: [NavbarComponent, BtnDisplayNavbarComponent, NavScrollDirective],
   imports: [CommonModule]
