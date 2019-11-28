@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
-  selector: "app-btn-display-navbar",
-  templateUrl: "./btn-display-navbar.component.html",
-  styleUrls: ["./btn-display-navbar.component.scss"]
+  selector: 'app-btn-display-navbar',
+  templateUrl: './btn-display-navbar.component.html',
+  styleUrls: ['./btn-display-navbar.component.scss']
 })
 export class BtnDisplayNavbarComponent implements OnInit {
   @Output()
