@@ -5,12 +5,8 @@ import { CatalogRoutingModule } from './catalog-routing.module';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 
-
 @NgModule({
   declarations: [ListComponent, DetailComponent],
-  imports: [
-    CommonModule,
-    CatalogRoutingModule
-  ]
+  imports: [CommonModule, CatalogRoutingModule]
 })
-export class CatalogModule { }
+export class CatalogModule {}

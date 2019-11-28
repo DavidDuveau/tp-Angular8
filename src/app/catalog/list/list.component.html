@@ -1,1 +1,28 @@
-<p>list works!</p>
+<div class="container btn-group col-sm-9 d-flex redir1">
+  <a class="btn btn-outline-success" routerLink="2">Lien 2</a>
+  <a class="btn btn-outline-success" [routerLink]="['/', 'cards', monPath]"
+    >Lien 3</a
+  >
+</div>
+<div class="container col-sm-9 d-flex">
+  <div class="table-responsive">
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let card of cards">
+          <td>
+            <a [routerLink]="['/', 'cards', card.cardId]">{{ card.cardId }}</a>
+          </td>
+          <td>
+            <a [routerLink]="['/', 'cards', card.cardId]">{{ card.name }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
