@@ -28,8 +28,7 @@ export class DetailComponent implements OnInit {
       catchError(reason => {
         console.log(reason);
         this.router.navigate(['..']);
-        return throwError("not found");
-        
+        return throwError('not found');
       })
     );
 

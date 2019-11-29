@@ -4,7 +4,20 @@
     >Lien 3</a
   >
 </div> -->
-<div class="container col-sm-9 d-flex">
+
+<div class="container col-sm-9">
+  <form class="form-group" (ngSubmit)="submit()">
+    <input
+      [(ngModel)]="query"
+      type="search"
+      name="val1"
+      class="form-control"
+      aria-describedby="Card search engine"
+      placeholder="Search"
+    />
+    <button type="submit" class="btn btn-outline-secondary">Submit</button>
+  </form>
+
   <ng-container *ngIf="cards$ | async as cards">
     <div class="list-group">
       <a
@@ -14,7 +27,6 @@
       >
         <div>
           <h4>{{ card.name }}</h4>
-          <p>{{ card.text }}</p>
           <p>{{ card.cardSet }}</p>
           <p>{{ card.playerClass }}</p>
         </div>

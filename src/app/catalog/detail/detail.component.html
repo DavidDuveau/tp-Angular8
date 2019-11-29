@@ -3,11 +3,12 @@
     ><div
       class="list-group-item list-group-item-action flex-column align-items-start"
     >
-      <h1>{{ card.name }} <small class="text-muted">{{card.cardSet}}</small></h1>
-<h2>{{ card.playerClass }}</h2>
+      <h1>
+        {{ card.name }} <small class="text-muted">{{ card.cardSet }}</small>
+      </h1>
+      <h2>{{ card.playerClass }}</h2>
       <p>{{ card.text }}</p>
-      
+      <span><img src="{{ card.img }}"/><img src="{{ card.imgGold }}"/></span>
     </div>
   </ng-container>
 </div>
-

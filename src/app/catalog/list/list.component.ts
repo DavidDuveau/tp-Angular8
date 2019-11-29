@@ -9,11 +9,17 @@ import { Card } from '../interface/card';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  constructor(private cardService: CardService) {}
   cards$: Observable<Card[]>;
+  query: string;
+
+  constructor(private cardService: CardService) {}
 
   ngOnInit() {
     this.cards$ = this.cardService.getCards('Basic');
     this.cardService.getCards('Basic').subscribe(cards => console.log(cards));
+  }
+
+  submit() {
+    console.log(this.query);
   }
 }
