@@ -1,1 +1,13 @@
-<p>detail works!</p>
+<div class="container col-sm-9 d-flex">
+  <ng-container *ngIf="card$ | async as card"
+    ><div
+      class="list-group-item list-group-item-action flex-column align-items-start"
+    >
+      <h1>{{ card.name }} <small class="text-muted">{{card.cardSet}}</small></h1>
+<h2>{{ card.playerClass }}</h2>
+      <p>{{ card.text }}</p>
+      
+    </div>
+  </ng-container>
+</div>
+

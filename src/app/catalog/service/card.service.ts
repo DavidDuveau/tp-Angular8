@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Card } from '../interface/card';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +29,25 @@ export class CardService {
     };
   }
 
-  getCards(setName: string, className?: string) {
+  getCards(setName: string, className?: string): Observable<Card[]> {
     return this.set(setName);
   }
 
-  private set(name) {
-    return this.httpClient.get(
-      `${this.endpoint}cards/sets/${name}`,
-      this.httpOptions
-    );
+  getCardById(id: string): Observable<Card> {
+    return this.httpClient
+      .get(`${this.endpoint}cards/${id}`, this.httpOptions)
+      .pipe(map((card: Card[]) => card[0]));
+  }
+
+  private set(name: string): Observable<Card[]> {
+    return this.httpClient
+      .get(`${this.endpoint}cards/sets/${name}`, this.httpOptions)
+      .pipe(map((cards: Card[]) => cards));
+  }
+
+  private playerClass(name: string): Observable<Card[]> {
+    return this.httpClient
+      .get(`${this.endpoint}cards/classes/${name}`, this.httpOptions)
+      .pipe(map((cards: Card[]) => cards));
   }
 }

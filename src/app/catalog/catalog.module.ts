@@ -8,6 +8,6 @@ import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [ListComponent, DetailComponent],
-  imports: [CommonModule, CatalogRoutingModule,HttpClientModule]
+  imports: [CommonModule, CatalogRoutingModule, HttpClientModule]
 })
 export class CatalogModule {}
