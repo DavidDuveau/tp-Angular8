@@ -5,17 +5,58 @@
   >
 </div> -->
 
-<div class="container col-sm-9">
-  <form class="form-group" (ngSubmit)="submit()">
+<div class="container col-sm-9" *ngIf="info$ | async as info">
+  <form class="form-group" (ngSubmit)="submit(myform)" #myform="ngForm">
     <input
       [(ngModel)]="query"
       type="search"
+      class="input1 form-control"
+      required
+      minlength="3"
       name="val1"
-      class="form-control"
       aria-describedby="Card search engine"
       placeholder="Search"
     />
+    <ng-container
+      *ngIf="myform.submitted && myform.controls.val1?.errors as errors"
+    >
+      <ng-container *ngIf="errors.required">
+        <div class="help-text text-danger">
+          Three letters required
+        </div></ng-container
+      >
+      <ng-container *ngIf="errors?.minlength as minlength">
+        <div class="help-text text-danger">
+          It is {{ minlength | json }}
+        </div></ng-container
+      >
+    </ng-container>
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
+  </form>
+
+  <form [formGroup]="filterForm" class="form2" (ngSubmit)="filter()">
+    <div class="form-group">
+      <label for="set">Set Name</label>
+      <select id="set" name="set" class="form-control" formControlName="set">
+        <option *ngFor="let setName of info.sets" [ngValue]="setName">
+          {{ setName }}</option
+        >
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="classe"> Classe Name</label>
+      <select
+        name="classe"
+        id="classe"
+        class="form-control"
+        formControlName="classe"
+      >
+        <option *ngFor="let classeName of info.classes" [ngValue]="classeName">
+          {{ classeName }}</option
+        >
+      </select>
+    </div>
+    <button class="btn btn-outline-secondary" type="submit">Submit</button>
   </form>
 
   <ng-container *ngIf="cards$ | async as cards">
@@ -25,10 +66,20 @@
         [routerLink]="card.cardId"
         class="list-group-item list-group-item-action flex-column align-items-start"
       >
-        <div>
-          <h4>{{ card.name }}</h4>
-          <p>{{ card.cardSet }}</p>
-          <p>{{ card.playerClass }}</p>
+        <div class="row">
+          <div class="col">
+            <h4>{{ card.name }}</h4>
+            <h5>{{ card.cardSet }}</h5>
+            <h5>
+              {{ card.playerClass }}
+              <small class="text-muted">{{ card.type }}</small>
+            </h5>
+          </div>
+          <ng-container *ngIf="card.img">
+            <div class="col d-flex justify-content-end">
+              <img src="{{ card.img }}" />
+            </div>
+          </ng-container>
         </div>
       </a>
     </div>

@@ -3,12 +3,52 @@
     ><div
       class="list-group-item list-group-item-action flex-column align-items-start"
     >
-      <h1>
-        {{ card.name }} <small class="text-muted">{{ card.cardSet }}</small>
-      </h1>
-      <h2>{{ card.playerClass }}</h2>
-      <p>{{ card.text }}</p>
-      <span><img src="{{ card.img }}"/><img src="{{ card.imgGold }}"/></span>
+      <div class="row">
+        <div class="col">
+          <h1>
+            {{ card.name }} <small class="text-muted">{{ card.cardSet }}</small>
+          </h1>
+          <h2>
+            {{ card.playerClass }}
+            <small class="text-muted">{{ card.rarity }}</small>
+          </h2>
+          <h3>
+            {{ card.type }} <small class="text-muted">{{ card.text }}</small>
+          </h3>
+          <h4>
+            {{ card.faction }}
+            <p>
+              <small class="text-muted">{{ card.flavor }}</small>
+            </p>
+          </h4>
+
+          <ng-container *ngIf="card.howToGet">
+            <h4>
+              {{ card.howToGet }}
+              <ng-container *ngIf="card.howToGetGold">
+                <p>
+                  <small class="text-muted"
+                    >How to get gold : {{ card.howToGetGold }}</small
+                  >
+                </p>
+              </ng-container>
+            </h4>
+          </ng-container>
+
+          <ng-container *ngIf="card.artist">
+            <h4>
+              Artist :
+              <p>
+                <small class="text-muted">{{ card.artist }}</small>
+              </p>
+            </h4>
+          </ng-container>
+        </div>
+
+        <div class="col img1 container d-flex justify-content-end">
+          <img src="{{ card.imgGold }}" />
+        </div>
+      </div>
     </div>
   </ng-container>
 </div>
