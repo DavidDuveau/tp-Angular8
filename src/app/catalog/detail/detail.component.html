@@ -1,83 +1,79 @@
-<div class="container d-flex">
-  <ng-container *ngIf="card$ | async as card"
-    ><div
-      class="list-group-item list-group-item-action flex-column align-items-start"
+<div class="container d-flex justify-content-center">
+  <ng-container *ngIf="card$ | async as card">
+    <div
+      class="row container d-flex list-group-item list-group-item-action justify-content-space-between"
     >
-      <div class="row d-flex">
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <h1>
-            {{ card.name }}
-            <p>
-              <small class="text-muted">{{ card.cardSet }}</small>
-            </p>
-          </h1>
-          <h2>
-            {{ card.playerClass }}
-            <small class="text-muted">{{ card.rarity }}</small>
-          </h2>
-          <h3>
-            {{ card.type }}
-            <small class="text-muted">{{ card.text }} </small>
-          </h3>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <h1>
+          {{ card.name }}
+          <p>
+            <small class="text-muted">{{ card.cardSet }}</small>
+          </p>
+        </h1>
+        <h2>
+          {{ card.playerClass }}
+          <small class="text-muted">{{ card.rarity }}</small>
+        </h2>
+        <h3>
+          {{ card.type }}
+          <small class="text-muted">{{ card.text }} </small>
+        </h3>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <h4>
+          {{ card.faction }}
+          <p>
+            <small class="text-muted">{{ card.flavor }}</small>
+          </p>
+        </h4>
+
+        <ng-container *ngIf="card.howToGet">
           <h4>
-            {{ card.faction }}
+            {{ card.howToGet }}
+            <ng-container *ngIf="card.howToGetGold">
+              <p>
+                <small class="text-muted">Gold : {{ card.howToGetGold }}</small>
+              </p>
+            </ng-container>
+          </h4>
+        </ng-container>
+
+        <ng-container *ngIf="card.artist">
+          <h4>
+            Artist :
             <p>
-              <small class="text-muted">{{ card.flavor }}</small>
+              <small class="text-muted">{{ card.artist }}</small>
             </p>
           </h4>
+        </ng-container>
 
-          <ng-container *ngIf="card.howToGet">
-            <h4>
-              {{ card.howToGet }}
-              <ng-container *ngIf="card.howToGetGold">
-                <p>
-                  <small class="text-muted"
-                    >Gold : {{ card.howToGetGold }}</small
-                  >
-                </p>
-              </ng-container>
-            </h4>
+        <h5>
+          <ng-container *ngIf="card.attack">
+            <p>
+              Attack : <small class="text-muted">{{ card.attack }}</small>
+            </p>
           </ng-container>
-
-          <ng-container *ngIf="card.artist">
-            <h4>
-              Artist :
-              <p>
-                <small class="text-muted">{{ card.artist }}</small>
-              </p>
-            </h4>
+          <ng-container *ngIf="card.durability">
+            <p>
+              Durability :
+              <small class="text-muted">{{ card.durability }}</small>
+            </p>
           </ng-container>
+          <ng-container *ngIf="card.health">
+            <p>
+              Health : <small class="text-muted">{{ card.health }}</small>
+            </p>
+          </ng-container>
+          <ng-container *ngIf="card.cost">
+            <p>
+              Cost : <small class="text-muted">{{ card.cost }}</small>
+            </p>
+          </ng-container>
+        </h5>
+      </div>
 
-          <h5>
-            <ng-container *ngIf="card.attack">
-              <p>
-                Attack : <small class="text-muted">{{ card.attack }}</small>
-              </p>
-            </ng-container>
-            <ng-container *ngIf="card.durability">
-              <p>
-                Durability :
-                <small class="text-muted">{{ card.durability }}</small>
-              </p>
-            </ng-container>
-            <ng-container *ngIf="card.health">
-              <p>
-                Health : <small class="text-muted">{{ card.health }}</small>
-              </p>
-            </ng-container>
-            <ng-container *ngIf="card.cost">
-              <p>
-                Cost : <small class="text-muted">{{ card.cost }}</small>
-              </p>
-            </ng-container>
-          </h5>
-        </div>
-
-        <div class="col-lg-4 col-sm-12 d-flex justify-content-center img1">
-          <img src="{{ card.imgGold }}" />
-        </div>
+      <div class="col-lg-4 col-sm-12 d-flex img1">
+        <img src="{{ card.imgGold }}" />
       </div>
     </div>
   </ng-container>
