@@ -1,20 +1,26 @@
-<div class="container col-sm-9 d-flex">
+<div class="container d-flex">
   <ng-container *ngIf="card$ | async as card"
     ><div
       class="list-group-item list-group-item-action flex-column align-items-start"
     >
-      <div class="row">
-        <div class="col">
+      <div class="row d-flex">
+        <div class="col-lg-4 col-md-6 col-sm-12">
           <h1>
-            {{ card.name }} <small class="text-muted">{{ card.cardSet }}</small>
+            {{ card.name }}
+            <p>
+              <small class="text-muted">{{ card.cardSet }}</small>
+            </p>
           </h1>
           <h2>
             {{ card.playerClass }}
             <small class="text-muted">{{ card.rarity }}</small>
           </h2>
           <h3>
-            {{ card.type }} <small class="text-muted">{{ card.text }}</small>
+            {{ card.type }}
+            <small class="text-muted">{{ card.text }} </small>
           </h3>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
           <h4>
             {{ card.faction }}
             <p>
@@ -28,7 +34,7 @@
               <ng-container *ngIf="card.howToGetGold">
                 <p>
                   <small class="text-muted"
-                    >How to get gold : {{ card.howToGetGold }}</small
+                    >Gold : {{ card.howToGetGold }}</small
                   >
                 </p>
               </ng-container>
@@ -43,9 +49,33 @@
               </p>
             </h4>
           </ng-container>
+
+          <h5>
+            <ng-container *ngIf="card.attack">
+              <p>
+                Attack : <small class="text-muted">{{ card.attack }}</small>
+              </p>
+            </ng-container>
+            <ng-container *ngIf="card.durability">
+              <p>
+                Durability :
+                <small class="text-muted">{{ card.durability }}</small>
+              </p>
+            </ng-container>
+            <ng-container *ngIf="card.health">
+              <p>
+                Health : <small class="text-muted">{{ card.health }}</small>
+              </p>
+            </ng-container>
+            <ng-container *ngIf="card.cost">
+              <p>
+                Cost : <small class="text-muted">{{ card.cost }}</small>
+              </p>
+            </ng-container>
+          </h5>
         </div>
 
-        <div class="col img1 container d-flex justify-content-end">
+        <div class="col-lg-4 col-sm-12 d-flex justify-content-center img1">
           <img src="{{ card.imgGold }}" />
         </div>
       </div>

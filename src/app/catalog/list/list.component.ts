@@ -4,6 +4,7 @@ import { Observable, Subject, BehaviorSubject, merge } from 'rxjs';
 import { Card } from '../interface/card';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
+import { SearchBarService } from '../service/search-bar.service';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,6 @@ export class ListComponent implements OnInit {
   query: string;
   myform: string;
   info$: Observable<{ classes: string[]; sets: string[] }>;
-  searchForm$: Subject<string>;
   filterForm$: BehaviorSubject<{ set: string; classe: string }>;
 
   filterForm = new FormGroup({
@@ -23,18 +23,21 @@ export class ListComponent implements OnInit {
     classe: new FormControl('Druid', [Validators.required])
   });
 
-  constructor(private cardService: CardService) {}
+  constructor(
+    private cardService: CardService,
+    private searchBarService: SearchBarService
+  ) {}
 
   ngOnInit() {
     // this.cards$ = this.cardsService.getCards('Basic');
 
-    this.searchForm$ = new Subject();
+    this.searchBarService.searchForm$ = new Subject();
     this.filterForm$ = new BehaviorSubject({
       set: this.filterForm.get('set').value,
       classe: this.filterForm.get('classe').value
     });
     this.cards$ = merge(
-      this.searchForm$.pipe(
+      this.searchBarService.searchForm$.pipe(
         switchMap(query => {
           return this.cardService.search(query);
         })
@@ -51,7 +54,7 @@ export class ListComponent implements OnInit {
   submit(form: NgForm) {
     console.log('SUBMIT', form, this.query);
     if (form.valid) {
-      this.searchForm$.next(this.query);
+      this.searchBarService.searchForm$.next(this.query);
     }
   }
 

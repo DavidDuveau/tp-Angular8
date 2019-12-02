@@ -4,15 +4,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BtnDisplayNavbarComponent } from './btn-display-navbar/btn-display-navbar.component';
 import { NavScrollDirective } from './directive/nav-scroll.directive';
 import { NavUserNamePipe } from './pipe/nav-user-name.pipe';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     BtnDisplayNavbarComponent,
     NavScrollDirective,
-    NavUserNamePipe
+    NavUserNamePipe,
+    SearchBarComponent
   ],
   exports: [NavbarComponent, BtnDisplayNavbarComponent, NavScrollDirective],
-  imports: [CommonModule]
+  imports: [CommonModule, FormsModule]
 })
 export class NavigationModule {}
